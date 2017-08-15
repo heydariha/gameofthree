@@ -42,6 +42,7 @@ input[type=text]{
 	//padding: 2px 2px 2px 5px;
 }
 .system_msg{color: #BDBDBD;font-style: italic;}
+.system_error{color: #EFBDBD;font-style: italic;}
 .user_name{font-weight:bold;}
 .user_message{color: #88B6E0;}
 

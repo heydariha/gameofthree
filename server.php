@@ -36,7 +36,7 @@ while (true) {
 	
 	
 	foreach ($changed as $changed_socket) {
-		while(socket_recv($changed_socket, $buf, 1024, 0) >= 1)
+		while(@socket_recv($changed_socket, $buf, 1024, 0) >= 1)
 		{
 			$received_text		= unmask($buf); 
 			$tst_msg				= json_decode($received_text); 
@@ -149,8 +149,8 @@ function perform_handshaking($receved_header,$client_conn, $host, $port)
 			$headers[$matches[1]] = $matches[2];
 		}
 	}
-
-	$secKey = $headers['Sec-WebSocket-Key'];
+	
+	$secKey = @$headers['Sec-WebSocket-Key'];
 	$secAccept = base64_encode(pack('H*', sha1($secKey . '258EAFA5-E914-47DA-95CA-C5AB0DC85B11')));
 	$upgrade  = "HTTP/1.1 101 Web Socket Protocol Handshake\r\n" .
 	"Upgrade: websocket\r\n" .

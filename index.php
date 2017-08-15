@@ -44,7 +44,7 @@ $(document).ready(function(){
 		
 		if(clientId != clientIdUNQ  &&  parseInt(unum) > 0)
 		{
-			alert(umsg+" \n "+unum);
+			// alert(umsg+" \n "+unum);
 			document.getElementById("send-btn").style.visibility = "hidden";
 			if(parseInt(unum)  ==1 )
 			{
@@ -64,22 +64,16 @@ $(document).ready(function(){
 		}
 		
 		if(type == 'usermsg') 
-		{
 			$('#message_box').append("<div><span class=\"user_name\" style=\"color:"+ucolor+"\">"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
-		}
 		if(type == 'system')
-		{
 			$('#message_box').append("<div class=\"system_msg\">"+umsg+"</div>");
-		}
-		
 		$('#message').val('');
-		
 		var Container = document.getElementById("message_box");
 		Container.scrollTop = Container.scrollHeight;
 	};
-	
-	websocket.onerror	= function(ev){$('#message_box').append("<div class=\"system_error\">Error Occurred - "+ev.data+"</div>");}; 
-	websocket.onclose 	= function(ev){$('#message_box').append("<div class=\"system_msg\">Connection Closed</div>");}; 
+
+	websocket.onerror		= function(ev){$('#message_box').append("<div class=\"system_error\">Error Occurred </div>");};
+	websocket.onclose	= function(ev){$('#message_box').append("<div class=\"system_msg\">Connection Closed</div>");};
 });
 
 </script>
